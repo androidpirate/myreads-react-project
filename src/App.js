@@ -37,7 +37,11 @@ class BooksApp extends React.Component {
           <Route
             exact path={"/"}
             render={({ history }) => (
-              <Home/>
+              <Home
+                books={this.state.books}
+                currentlyReading={this.state.currentlyReading}
+                wantToRead={this.state.wantToRead}
+                read={this.state.read}/>
             )}/>
           <Route
             exact path={"/search"}

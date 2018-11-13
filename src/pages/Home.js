@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
 import Shelf from '../components/Shelf'
 import FAB from '../components/FAB'
+import PropTypes from 'prop-types'
 
 class Home extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    currentlyReading: PropTypes.array.isRequired,
+    wantToRead: PropTypes.array.isRequired,
+    read: PropTypes.array.isRequired,
+  }
+  
   render() {
     return (
       <div className="list-books">
