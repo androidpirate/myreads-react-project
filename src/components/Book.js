@@ -7,13 +7,17 @@ class Book extends Component {
     changeShelf: PropTypes.func.isRequired
   }
 
+  moveTo = event => {
+    this.props.changeShelf(this.props.book, event.target.value)
+  }
+
   render() {
     const bookCover = this.props.book.imageLinks && this.props.book.imageLinks.thumbnail
     const bookTitle = this.props.book.title
 
     let currentShelf = 'none'
     for(let item of this.props.books) {
-      if(item.id === this.props.books) {
+      if(item.id === this.props.book.id) {
         currentShelf = item.shelf
         break
       }
@@ -28,7 +32,7 @@ class Book extends Component {
               height: 193,
               backgroundImage: `url(${bookCover})` }}></div>
             <div className="book-shelf-changer">
-              <select defaultValue={currentShelf}>
+              <select onChange={this.moveTo} defaultValue={currentShelf}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

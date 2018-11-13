@@ -33,6 +33,7 @@ class BooksApp extends React.Component {
 
   changeShelf = (updatedBook, shelf) => {
     BooksAPI.update(updatedBook, shelf).then(response => {
+      updatedBook.shelf = shelf
       this.setState(prevState => ({
         // remove updated books from books array
         books: prevState.books.filter(book => book.id !== updatedBook.id)
