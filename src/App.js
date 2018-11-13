@@ -7,7 +7,10 @@ import { Switch, Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-
+    books: [],
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
   }
 
   render() {
