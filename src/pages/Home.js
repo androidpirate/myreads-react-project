@@ -10,7 +10,7 @@ class Home extends Component {
     wantToRead: PropTypes.array.isRequired,
     read: PropTypes.array.isRequired,
   }
-  
+
   render() {
     return (
       <div className="list-books">
@@ -19,9 +19,9 @@ class Home extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf/>
-            <Shelf/>
-            <Shelf/>
+            <Shelf title="currentlyReading" books={this.props.currentlyReading}/>
+            <Shelf title="wantToRead" books={this.props.wantToRead}/>
+            <Shelf title="read" books={this.props.read}/>
           </div>
           <FAB/>
       </div>
