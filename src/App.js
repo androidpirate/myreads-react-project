@@ -4,6 +4,7 @@ import * as BooksAPI from './BooksAPI'
 import Home from './pages/Home'
 import Search from './pages/Search'
 import { Switch, Route } from 'react-router-dom'
+import Background from './pages/background.png'
 
 class BooksApp extends React.Component {
   state = {
@@ -46,8 +47,13 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    const divBackground = {
+      background: '#ffcccc',
+      backgroundImage: `url(${Background})`
+    }
+
     return (
-      <div className="app">
+      <div className="app" style={divBackground}>
         <Switch>
           <Route
             exact path={"/"}
