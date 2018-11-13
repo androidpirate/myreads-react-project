@@ -13,6 +13,24 @@ class BooksApp extends React.Component {
     read: []
   }
 
+  async componentDidMount() {
+    try {
+      this.state.books = await BooksAPI.getAll()
+      const books = this.state.books
+      this.updateShelves(books)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  updateShelves = (books) => {
+    this.setState(state => ({
+      currentlyReading: books.filter((book) => book.shelf === "currentlyReading"),
+      wantToRead: books.filter((book) => book.shelf === "wantToRead"),
+      read: books.filter((book) => book.shelf === "read")
+    }))
+  }
+
   render() {
     return (
       <div className="app">
