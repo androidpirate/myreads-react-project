@@ -48,21 +48,20 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        <Switch>
           <Route
             exact path={"/"}
             render={({ history }) => (
-              <Home
-                books={this.state.books}
-                currentlyReading={this.state.currentlyReading}
-                wantToRead={this.state.wantToRead}
-                read={this.state.read}
+              <Home books={this.state.books} currentlyReading={this.state.currentlyReading}
+                wantToRead={this.state.wantToRead} read={this.state.read}
                 changeShelf={this.changeShelf}/>
-            )}/>
+          )}/>
           <Route
             exact path={"/search"}
             render={({ history }) => (
-              <Search/>
+              <Search books={this.state.books} changeShelf={this.changeShelf}/>
           )}/>
+        </Switch>
       </div>
     )
   }
