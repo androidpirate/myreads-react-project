@@ -12,7 +12,8 @@ class Search extends Component {
 
   state = {
     query: '',
-    results: []
+    results: [],
+    queryError: false
   }
 
   queryBooks = event => {
@@ -20,10 +21,15 @@ class Search extends Component {
     this.setState({query: query})
     if(query) {
       BooksAPI.search(query.trim(), 20).then(books => {
-        books.length > 0 &&
-          this.setState({results: books})
+        books.length > 0
+        ? this.setState({results: books, queryError: false})
+        : this.setState({results: [], queryError: true})
       })
+    } else {
+       this.setState({results: [], queryError: false})
     }
+    console.log(this.state.results)
+    console.log(query)
   }
 
   render() {
@@ -40,26 +46,26 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
         {this.state.results.length > 0 && (
-              <div>
-                <h3>Found {this.state.results.length} books</h3>
-                <ol className="books-grid">
-                  {this.state.results.map(book => (
-                    <Book
-                      key={book.id}
-                      books={this.props.books}
-                      book={book}
-                      changeShelf={this.props.changeShelf} />
-                  ))}
-                </ol>
-              </div>
-            )}
-            {this.state.results.length === 0 && (
-              <div>
-                <h3>No results to show. Try searching a keyword.</h3>
-              </div>
-            )}
+          <div>
+            <h3>Found {this.state.results.length} books</h3>
+            <ol className="books-grid">
+              {this.state.results.map(book => (
+                <Book
+                  key={book.id}
+                  books={this.props.books}
+                  book={book}
+                  changeShelf={this.props.changeShelf} />
+              ))}
+            </ol>
           </div>
-        </div>
+        )}
+        {this.state.queryError && (
+          <div>
+            <h3>No results to show. Try searching a keyword.</h3>
+          </div>
+        )}
+      </div>
+    </div>
     )
   }
 }
