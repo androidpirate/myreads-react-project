@@ -19,9 +19,9 @@ class Home extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf title="currentlyReading" books={this.props.currentlyReading}/>
-            <Shelf title="wantToRead" books={this.props.wantToRead}/>
-            <Shelf title="read" books={this.props.read}/>
+            <Shelf title="Currently Reading" books={this.props.currentlyReading}/>
+            <Shelf title="Want To Read" books={this.props.wantToRead}/>
+            <Shelf title="Read" books={this.props.read}/>
           </div>
           <FAB/>
       </div>
