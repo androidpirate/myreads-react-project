@@ -9,6 +9,7 @@ class Home extends Component {
     currentlyReading: PropTypes.array.isRequired,
     wantToRead: PropTypes.array.isRequired,
     read: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired
   }
 
   render() {
@@ -19,9 +20,15 @@ class Home extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf title="Currently Reading" books={this.props.currentlyReading}/>
-            <Shelf title="Want To Read" books={this.props.wantToRead}/>
-            <Shelf title="Read" books={this.props.read}/>
+            <Shelf title="Currently Reading"
+              books={this.props.currentlyReading}
+              changeShelf={this.props.changeShelf}/>
+            <Shelf title="Want To Read"
+              books={this.props.wantToRead}
+              changeShelf={this.props.changeShelf}/>
+            <Shelf title="Read"
+              books={this.props.read}
+              changeShelf={this.props.changeShelf}/>
           </div>
           <FAB/>
       </div>

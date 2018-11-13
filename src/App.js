@@ -54,7 +54,8 @@ class BooksApp extends React.Component {
                 books={this.state.books}
                 currentlyReading={this.state.currentlyReading}
                 wantToRead={this.state.wantToRead}
-                read={this.state.read}/>
+                read={this.state.read}
+                changeShelf={this.changeShelf}/>
             )}/>
           <Route
             exact path={"/search"}
